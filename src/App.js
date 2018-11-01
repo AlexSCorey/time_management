@@ -16,15 +16,23 @@ class App extends Component {
   }
   onSaveTodo (event) {
     event.preventDefault()
-    this.props.onSaveTodo()
+    console.log(event.target.value)
+    this.props.onSaveTodo(event.target.value)
   }
   render () {
     return (
       <div className='App'>
-
-        <input onChange={this.onUpdateUser} />
-        <button type='submit' onClick={this.onSaveTodo} >Save</button>
-        {this.props.user}
+        <form>
+          <label>Add new To do item</label>
+          <input onChange={this.onUpdateUser} />
+          <button type='submit' onClick={this.onSaveTodo}>Save</button>
+        </form>
+        <div>
+          {console.log(this.props.todo)}
+          {this.props.todo.map((todo) =>
+            <div key={Math.random()}>{todo.todo}</div>
+          )}
+        </div>
       </div>
     )
   }
@@ -37,12 +45,18 @@ const userSelector = createSelector(
   state => state.user,
   user => user
 )
+const todoSelector = createSelector(
+  state => state.todo,
+  todo => todo
+)
 const mapStateToProps = createSelector(
   productSelector,
   userSelector,
-  (product, user) => ({
+  todoSelector,
+  (product, user, todo) => ({
     product,
-    user
+    user,
+    todo
   })
 )
 

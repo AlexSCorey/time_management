@@ -1,6 +1,6 @@
 import $ from 'jquery'
 export const UPDATE_USER = 'users:updateUser'
-export const SHOW_ERROR = 'users:showError'
+export const SUBMIT_USER = 'users:saveTodo'
 export const SAVE_TODO = 'users:saveTodo'
 
 export function updateUser (newUser) {
@@ -12,22 +12,13 @@ export function updateUser (newUser) {
   }
 }
 
-export function saveTodo () {
-  console.log('here user-actions')
+export function saveTodo (value) {
+  console.log(value)
   return {
-    type: SAVE_TODO,
+    type: SUBMIT_USER,
     payload: {
-      user: 'save'
+      user: `${value}`
 
-    }
-  }
-}
-
-export function showError () {
-  return {
-    type: SHOW_ERROR,
-    payload: {
-      user: 'ERROR!!'
     }
   }
 }
@@ -42,7 +33,6 @@ export function apiRequest () {
       },
       error () {
         console.log('error')
-        dispatch(showError())
       }
     })
   }

@@ -1,11 +1,10 @@
 import { SAVE_TODO } from '../actions/user-actions'
 
 export default function todoReducer (state = [], { type, payload }) {
-  console.log(payload)
   switch (type) {
     case SAVE_TODO:
-      console.log(payload.user)
-      return payload.user
+      console.log(payload, 'type')
+      return { ...state.todo, payload }
     default:
       return state
   }

@@ -10,7 +10,7 @@ import { Provider } from 'react-redux'
 import productsReducer from './reducers/products-reducer'
 import userReducer from './reducers/user-reducer'
 import todoReducer from './reducers/todo-reducer'
-
+let todoNum = 1
 const allStoreEnhancers = compose(
   applyMiddleware(thunk),
   window.devToolsExtension && window.devToolsExtension()
@@ -23,7 +23,8 @@ const allReducers = combineReducers({
 const store = createStore(allReducers, {
   products: [{ name: 'iphone' }],
   user: 'Michael',
-  todo: 'Go To Grocery Store'
+  todo: [{ todo: 'Get a fucking job bitch' },
+    { todo: 'Go to the grocery store' }]
 },
 allStoreEnhancers
 )
