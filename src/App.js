@@ -1,28 +1,55 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
+import { bindActionCreators } from 'redux'
+import { createSelector } from 'reselect'
+import { connect } from 'react-redux'
+import { updateUser, apiRequest, saveTodo } from './actions/user-actions'
 
 class App extends Component {
-  render() {
+  constructor (props) {
+    super(props)
+    this.onUpdateUser = this.onUpdateUser.bind(this)
+    this.onSaveTodo = this.onSaveTodo.bind(this)
+  }
+  onUpdateUser (event) {
+    this.props.onUpdateUser(event.target.value)
+  }
+  onSaveTodo (event) {
+    event.preventDefault()
+    this.props.onSaveTodo()
+  }
+  render () {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className='App'>
+
+        <input onChange={this.onUpdateUser} />
+        <button type='submit' onClick={this.onSaveTodo} >Save</button>
+        {this.props.user}
       </div>
-    );
+    )
   }
 }
+const productSelector = createSelector(
+  state => state.products,
+  products => products
+)
+const userSelector = createSelector(
+  state => state.user,
+  user => user
+)
+const mapStateToProps = createSelector(
+  productSelector,
+  userSelector,
+  (product, user) => ({
+    product,
+    user
+  })
+)
 
-export default App;
+const mapActionsToProps = {
+  onUpdateUser: updateUser,
+  onApiRequest: apiRequest,
+  onSaveTodo: saveTodo
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(App)
