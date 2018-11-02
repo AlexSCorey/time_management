@@ -1,7 +1,7 @@
 import $ from 'jquery'
 export const UPDATE_USER = 'users:updateUser'
-export const SUBMIT_USER = 'users:saveTodo'
-export const SAVE_TODO = 'users:saveTodo'
+export const SUBMIT_USER = 'todo:saveTodo'
+export const SAVE_TODO = 'todo:saveTodo'
 
 export function updateUser (newUser) {
   return {
@@ -13,11 +13,12 @@ export function updateUser (newUser) {
 }
 
 export function saveTodo (value) {
-  console.log(value)
+  console.log(value, 'value in user action')
   return {
     type: SUBMIT_USER,
     payload: {
-      user: `${value}`
+      todo: `${value}`,
+      id: Math.random()
 
     }
   }

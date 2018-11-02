@@ -16,10 +16,10 @@ class App extends Component {
   }
   onSaveTodo (event) {
     event.preventDefault()
-    console.log(event.target.value)
-    this.props.onSaveTodo(event.target.value)
+    this.props.onSaveTodo(this.props.user)
   }
   render () {
+    let { todo, product } = this.props
     return (
       <div className='App'>
         <form>
@@ -28,11 +28,13 @@ class App extends Component {
           <button type='submit' onClick={this.onSaveTodo}>Save</button>
         </form>
         <div>
-          {console.log(this.props.todo)}
-          {this.props.todo.map((todo) =>
-            <div key={Math.random()}>{todo.todo}</div>
+          {todo.map((todo) =>
+            <div key={todo.id}>{todo.todo}</div>
           )}
         </div>
+        <div>
+          {product.map((product) =>
+            <div>{product.name}</div>)}</div>
       </div>
     )
   }
