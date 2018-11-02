@@ -1,40 +1,23 @@
-import $ from 'jquery'
-export const UPDATE_USER = 'users:updateUser'
-export const SUBMIT_USER = 'todo:saveTodo'
-export const SAVE_TODO = 'todo:saveTodo'
+// import $ from 'jquery'
+// export const ADD_TODO = 'todo:addTodo'
+export const SUBMIT_TODO = 'todo:saveTodo'
 
-export function updateUser (newUser) {
-  return {
-    type: UPDATE_USER,
-    payload: {
-      user: newUser
-    }
-  }
-}
+// export function newTodo (newTodo) {
+//   return {
+//     type: ADD_TODO,
+//     payload: {
+//       creatingTodo: newTodo
+//     }
+//   }
+// }
 
 export function saveTodo (value) {
-  console.log(value, 'value in user action')
   return {
-    type: SUBMIT_USER,
+    type: SUBMIT_TODO,
     payload: {
       todo: `${value}`,
-      id: Math.random()
+      id: Math.floor(Math.random() * 100)
 
     }
-  }
-}
-
-export function apiRequest () {
-  return dispatch => {
-    $.ajax({
-      url: 'http://google.com',
-      success (response) {
-        dispatch(updateUser(response.newUser))
-        console.log('success')
-      },
-      error () {
-        console.log('error')
-      }
-    })
   }
 }

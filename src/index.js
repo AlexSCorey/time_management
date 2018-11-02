@@ -6,9 +6,7 @@ import * as serviceWorker from './serviceWorker'
 import thunk from 'redux-thunk'
 import { applyMiddleware, compose, combineReducers, createStore } from 'redux'
 import { Provider } from 'react-redux'
-
-import productsReducer from './reducers/products-reducer'
-import userReducer from './reducers/user-reducer'
+// import userReducer from './reducers/user-reducer'
 import todoReducer from './reducers/todo-reducer'
 
 const allStoreEnhancers = compose(
@@ -16,21 +14,13 @@ const allStoreEnhancers = compose(
   window.devToolsExtension && window.devToolsExtension()
 )
 const allReducers = combineReducers({
-  products: productsReducer,
-  user: userReducer,
   todo: todoReducer
 })
 const store = createStore(allReducers, {
-  products: [{ name: 'iphone' }],
-  user: 'Michael',
   todo: []
 },
 allStoreEnhancers
 )
 
-ReactDOM.render(<Provider store={store}><App aRandomProps='whatever' /></Provider>, document.getElementById('root'))
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'))
 serviceWorker.unregister()
