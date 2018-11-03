@@ -11,6 +11,13 @@ export function login (username, password) {
     }
   }
 }
+export function Registering () {
+  return {
+    type: Registering,
+    payload: ''
+  }
+}
+
 export function register (username, password) {
   return {
     type: REGISTER,

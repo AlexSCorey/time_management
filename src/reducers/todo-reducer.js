@@ -9,7 +9,7 @@ export default function todoReducer (state = null, { type, payload }) {
       // console.log(payload, 'payload')
       return ([ ...state.concat({ title: payload.title, id: payload.id, complete: false, editing: false }) ])
     case ADD_TODO:
-      console.log(payload, 'payload')
+      // console.log(payload, 'payload')
       return ([...state.concat({ title: payload.title })])
     default:
       return state
