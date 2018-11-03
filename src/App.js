@@ -3,16 +3,23 @@ import './App.css'
 import { bindActionCreators } from 'redux'
 import { createSelector } from 'reselect'
 import { connect } from 'react-redux'
-import { newTodo, saveTodo } from './actions/user-actions'
 
+import { newTodo, saveTodo } from './actions/user-actions'
 import TodoList from './components/todo-list'
+import LoginContainer from './components/LoginContainer'
 
 class App extends Component {
   render () {
-    let { todo, onSaveTodo, onNewTodo, creatingTodo } = this.props
-    return (
-      <TodoList todo={todo} onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />
-    )
+    let { todos, onSaveTodo, onNewTodo, creatingTodo } = this.props
+    if (this.props.currentUser) {
+      return (
+        <TodoList todos={todos} key={todos.id} onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />
+      )
+    } else {
+      return (
+        <LoginContainer />
+      )
+    }
   }
 }
 
@@ -21,15 +28,15 @@ const userSelector = createSelector(
   user => user
 )
 const todoSelector = createSelector(
-  state => state.todo,
-  todo => todo
+  state => state.todos,
+  todos => todos
 )
 const mapStateToProps = createSelector(
   userSelector,
   todoSelector,
-  (user, todo) => ({
+  (user, todos) => ({
     user,
-    todo
+    todos
   })
 )
 const mapActionsToProps = {

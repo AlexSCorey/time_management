@@ -14,10 +14,11 @@ const allStoreEnhancers = compose(
   window.devToolsExtension && window.devToolsExtension()
 )
 const allReducers = combineReducers({
-  todo: todoReducer
+  todos: todoReducer
 })
 const store = createStore(allReducers, {
-  todo: []
+  todos: [],
+  registering: false
 },
 allStoreEnhancers
 )
