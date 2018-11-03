@@ -1,5 +1,6 @@
+
 // import $ from 'jquery'
-export const ADD_TODO = 'todo:addTodo'
+export const ADD_TODO = 'ADD_TODO'
 export const SUBMIT_TODO = 'todo:saveTodo'
 
 export function newTodo (newTodo) {
@@ -19,7 +20,8 @@ export function saveTodo (value) {
     payload: {
       title: `${value}`,
       id: Math.floor(Math.random() * 100)
-
     }
   }
 }
+
+

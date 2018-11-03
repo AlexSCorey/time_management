@@ -5,17 +5,17 @@ import Register from './Register'
 
 class LoginContainer extends Component {
   render () {
-    let {}
-    if(this.props.registering){
+    let { onLogin, onRegiser } = this.props
+    if (this.props.registering) {
       return (
         <div>
-          <Register />
+          <Register onRegister={onRegiser} />
         </div>)
-    } else{
-     return (
-      <div>
-        <Login />
-      </div>)
+    } else {
+      return (
+        <div>
+          <Login onLogin={onLogin} />
+        </div>)
     }
   }
 }

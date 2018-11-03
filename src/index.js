@@ -17,8 +17,7 @@ const allReducers = combineReducers({
   todos: todoReducer
 })
 const store = createStore(allReducers, {
-  todos: [],
-  registering: false
+  todos: []
 },
 allStoreEnhancers
 )
