@@ -44,6 +44,7 @@ user_token required
 The response will be:
 {
   'todo_id':1,
+  'title': Name of Todo,
   'todo_duration_amount':40,
   'todo_date': 'MM-DD-YYY'/undefined,
   'todo_start_time':'hh:mm:a',
@@ -55,7 +56,8 @@ POST/todos
 
 The request body should be:
 user_token required
-{
+{ 
+  'title': Name of Todo,
   'todo_duration_amount':40
 }
 
@@ -68,6 +70,7 @@ optional keys:
 The response will be:
 {
   'todo_id':1,
+  'title': Name of Todo,
   'todo_duration_amount':40,
   'todo_date': 'MM-DD-YYY'/undefined,
   'todo_start_time':'hh:mm:a'/undefined,

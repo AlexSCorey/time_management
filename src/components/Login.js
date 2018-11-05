@@ -8,7 +8,7 @@ class Login extends Component {
         <div className={this.props.loginError ? 'loginError' : ''} />
         <Label>Email:<Input placeholder='enter your email' /></Label>
         <Label>Password:<Input type='password' placeholder='enter your password' /></Label>
-        <Button>Login</Button>
+        <Button className='button'>Login</Button>
       </div>
     )
   }

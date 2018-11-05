@@ -17,7 +17,30 @@ const allReducers = combineReducers({
   todos: todoReducer
 })
 const store = createStore(allReducers, {
-  todos: []
+  todos: [
+    {
+      'todo_id': 1,
+      'todo_duration_amount': 40,
+      'title': 'Todo 1',
+      'todo_date': 11 - 25 - 2018,
+      'todo_start_time': null,
+      'complete': false
+    },
+    { 'todo_id': 2,
+      'title': 'Todo 2',
+      'todo_duration_amount': 30,
+      'todo_date': 11 - 26 - 2018,
+      'todo_start_time': null,
+      'complete': false
+    },
+    { 'todo_id': 3,
+      'title': 'Todo 3',
+      'todo_duration_amount': 20,
+      'todo_date': 11 - 27 - 2018,
+      'todo_start_time': null,
+      'complete': false
+    }
+  ]
 },
 allStoreEnhancers
 )

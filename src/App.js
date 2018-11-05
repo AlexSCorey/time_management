@@ -11,7 +11,7 @@ import {
 
 import { newTodo, saveTodo } from './actions/user-actions'
 import { login, register } from './actions/login-actions'
-import TodoList from './components/todo-list'
+import TodoContainer from './components/TodoContainer'
 import LoginContainer from './components/LoginContainer'
 import Profile from './components/Profile'
 
@@ -29,7 +29,7 @@ class App extends Component {
               <Profile />}
             />
             <Route path='/list' render={() =>
-              <TodoList todos={todos} key={todos.id} onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />}
+              <TodoContainer todos={todos} key={todos.id} onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />}
             />
           </div>
         </div>
@@ -39,12 +39,12 @@ class App extends Component {
     // let { todos, onSaveTodo, onNewTodo, creatingTodo } = this.props
     // if (this.props.currentUser) {
     //   return (
-    //     <TodoList todos={todos} key={todos.id} onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />
+    //     <TodoContainer todos={todos} key={todos.id} onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />
     //   )
     // } else {
     //   return (
     //     <div>
-    //       <TodoList todos={todos} key={todos.id} onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />
+    //       <TodoContainer todos={todos} key={todos.id} onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />
     //       {/* <LoginContainer onLogin={onLogin} onRegister={onRegister} /> */}
     //     </div>
     //   )
