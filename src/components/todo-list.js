@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Label, Input, Button } from 'bloomer'
 
 class TodoList extends Component {
   constructor (props) {
@@ -28,9 +29,9 @@ class TodoList extends Component {
       return (
         <div className='App'>
           <form>
-            <label>Add new To do item</label>
-            <input value={this.state.value} onChange={this.onNewTodo} />
-            <button type='submit' onClick={this.onSaveTodo}>Save</button>
+            <Label>Add new To do item</Label>
+            <Input value={this.state.value} onChange={this.onNewTodo} />
+            <Button type='submit' onClick={this.onSaveTodo}>Save</Button>
           </form>
           <div>
             {todos.map((todo) =>
@@ -44,9 +45,9 @@ class TodoList extends Component {
     } else {
       return (<div className='App'>
         <form>
-          <label>Add new To do item</label>
-          <input value={this.state.value} onChange={this.onNewTodo} />
-          <button type='submit' onClick={this.onSaveTodo}>Save</button>
+          <Label>Add new To do item</Label>
+          <Input value={this.state.value} onChange={this.onNewTodo} />
+          <Button type='submit' onClick={this.onSaveTodo}>Save</Button>
         </form>
       </div>)
     }

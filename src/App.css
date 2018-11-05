@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -21,7 +22,25 @@
 .App-link {
   color: #61dafb;
 }
+.weekDays-selector input {
+  display: none!important;
+}
 
+.weekDays-selector input[type=checkbox] + label {
+  display: inline-block;
+  border-radius: 6px;
+  background: white;
+  height: 40px;
+  width: 30px;
+  margin-right: 3px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.weekDays-selector input[type=checkbox]:checked + label {
+  background: #4ECDC4
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
