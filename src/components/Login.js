@@ -4,10 +4,13 @@ import { Label, Input, Button } from 'bloomer'
 class Login extends Component {
   render () {
     return (
-      <div>
+      <div className='container'>
+        <h1>T(i)m(e) C(o)ntr(o)l(e)r</h1>
         <div className={this.props.loginError ? 'loginError' : ''} />
-        <Label>Email:<Input placeholder='enter your email' /></Label>
-        <Label>Password:<Input type='password' placeholder='enter your password' /></Label>
+        <Label>Email:</Label>
+        <Input placeholder='enter your email' />
+        <Label>Password:</Label>
+        <Input type='password' placeholder='enter your password' />
         <Button className='button'>Login</Button>
       </div>
     )

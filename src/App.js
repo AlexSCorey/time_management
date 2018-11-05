@@ -8,6 +8,9 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
+import './index.css'
+import 'bulma/css/bulma.css'
+import 'firebase'
 
 import { newTodo, saveTodo } from './actions/user-actions'
 import { login, register } from './actions/login-actions'
@@ -22,7 +25,7 @@ class App extends Component {
       <Router>
         <div className='main'>
           <div className='routes'>
-            <Route path='/' render={() =>
+            <Route path='/login' render={() =>
               <LoginContainer onLogin={onLogin} onRegister={onRegister} />}
             />
             <Route path='/profile' render={() =>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Label, Input } from 'bloomer'
+import { Label, Input, Button } from 'bloomer'
 
 class Profile extends Component {
   constructor (props) {
@@ -19,7 +19,7 @@ class Profile extends Component {
         <div />
         <Input placeholder='What time of day do you get home from work' />
         <div className='weekDay-selector'>
-          <Input value='Sunday' type='checkbox' id='weekDay-sun' className='weekday' />
+          <Button isActive='true' value='Sunday' placeholder='S'type='checkbox' id='weekDay-sun' className='weekday' />
           <Label htmlFor='weekDay-sun'>S</Label>
           <Input value='Monday' type='checkbox' id='weekDay-mon' className='weekday' />
           <Label htmlFor='weekDay-mon'>M</Label>
