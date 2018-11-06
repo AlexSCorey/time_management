@@ -11,7 +11,7 @@ class Login extends Component {
         <Input placeholder='enter your email' />
         <Label>Password:</Label>
         <Input type='password' placeholder='enter your password' />
-        <Button className='button'>Login</Button>
+        <Button className='btn'>Login</Button>
       </div>
     )
   }

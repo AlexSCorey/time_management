@@ -19,3 +19,13 @@ code {
   max-width: 75%;
   margin: 0 auto;
 }
+.dropDownContainer{
+  display:flex;
+  justify-content: center;
+  align-content: space-around;
+}
+.dropDownBtn{
+  margin: 0 auto;
+  padding:50px;
+  width: 100px;
+}

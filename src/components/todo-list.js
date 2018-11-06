@@ -5,16 +5,25 @@ class TodoList extends Component {
     let { todos } = this.props
     return (
       <div className='container'>
-        {todos.map((todo) =>
-          <div key={todo.id}>
-            <div>{todo.title}</div>
-            {/* <div>{todo.duration}</div>
-              <div>{todo.date}</div> */}
-          </div>
-        )}
+        <table >
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Duration</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {todos.map((todo) =>
+              <tr key={todo.id}>
+                <td>{todo.title}</td>
+                <td>{todo.duration}</td>
+                <td>{todo.date}</td>
+              </tr>)}
+          </tbody>
+        </table>
       </div>
     )
   }
 }
-
 export default TodoList
