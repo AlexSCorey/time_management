@@ -1,41 +1,80 @@
 import React, { Component } from 'react'
 import { Label, Input, Button } from 'bloomer'
+import moment from 'moment'
 
 class Profile extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      workStartTime: '',
-      workEndTime: '',
-      workDays: ''
+      days: [
+        { id: 0,
+          day: 'Sunday',
+          'active': false,
+          start: moment(new Date()).startOf('min').format('h:mm a'),
+          end: moment(new Date()).startOf('min').format('h:mm a') },
+        { id: 1,
+          day: 'Monday',
+          active: false,
+          start: moment(new Date()).startOf('min').format('h:mm a'),
+          end: moment(new Date()).startOf('min').format('h:mm a') },
+        { id: 2,
+          day: 'Tuesday',
+          active: false,
+          start: moment(new Date()).startOf('min').format('h:mm a'),
+          end: moment(new Date()).startOf('min').format('h:mm a') },
+        { id: 3,
+          day: 'Wednesday',
+          active: false,
+          start: moment(new Date()).startOf('min').format('h:mm a'),
+          end: moment(new Date()).startOf('min').format('h:mm a') },
+        { id: 4,
+          day: 'Thursday',
+          active: false,
+          start: moment(new Date()).startOf('min').format('h:mm a'),
+          end: moment(new Date()).startOf('min').format('h:mm a') },
+        { id: 5,
+          day: 'Friday',
+          active: false,
+          start: moment(new Date()).startOf('min').format('h:mm a'),
+          end: moment(new Date()).startOf('min').format('h:mm a') },
+        { id: 6,
+          day: 'Saturday',
+          active: false,
+          start: moment(new Date()).startOf('min').format('h:mm a'),
+          end: moment(new Date()).startOf('min').format('h:mm a') }
+      ]
     }
   }
+  activateDay (e, daySelected, dayID) {
+    e.preventDefault()
+    let { days } = this.state
+    let foundDay = days.find(day => day.day === daySelected)
+    foundDay['active'] = !foundDay.active
+    let otherDays = days.filter(day => day.day !== daySelected)
+    otherDays.splice(dayID, 0, foundDay)
+    this.setState({ days: otherDays })
+  }
+
   render () {
-    return (<div>
-      <form>
-        <Label>Enter Your Work Schedule</Label>
-        <div />
-        <Input placeholder='What time of day do you leave for work' />
-        <div />
-        <Input placeholder='What time of day do you get home from work' />
-        <div className='weekDay-selector'>
-          <Button isActive='true' value='Sunday' placeholder='S'type='checkbox' id='weekDay-sun' className='weekday' />
-          <Label htmlFor='weekDay-sun'>S</Label>
-          <Input value='Monday' type='checkbox' id='weekDay-mon' className='weekday' />
-          <Label htmlFor='weekDay-mon'>M</Label>
-          <Input value='Tuesday' type='checkbox' id='weekDay-tue' className='weekday' />
-          <Label htmlFor='weekDay-tue'>T</Label>
-          <Input value='Wednesday' type='checkbox' id='weekDay-wed' className='weekday' />
-          <Label htmlFor='weekDay-wed'>W</Label>
-          <Input value='Thursday' type='checkbox' id='weekDay-thu' className='weekday' />
-          <Label htmlFor='weekDay-thur'>T</Label>
-          <Input value='Friday' type='checkbox' id='weekDay-fri' className='weekday' />
-          <Label htmlFor='weekDay-fri'>F</Label>
-          <Input value='Saturday' type='checkbox' id='weekDay-sat' className='weekday' />
-          <Label htmlFor='weekDay-sat'>S</Label>
-        </div>
-      </form>
-    </div>)
+    return (
+      <div className='container'>
+        <form>
+          <h1>Add your work schedule for the week</h1>
+          <h2>Remember to consider travel time to and from work</h2>
+          <div>
+            {this.state.days.map((day) =>
+              <div className='proBtnCtnr' key={day.day}>
+                <Button value={`${day.day}`} type='button' id='weekDay-mon' className='weekday' isColor={day.active ? 'success' : ''} onClick={e => { this.activateDay(e, day.day, day.id) }}>{day.day}</Button>
+                <div className={day.active === true ? 'active' : 'unactive'}>
+                  <input placeholder={day.start} />
+                  <input placeholder={day.end} />
+                </div>
+              </div>
+            )}
+          </div>
+        </form>
+      </div>
+    )
   }
 }
 export default Profile

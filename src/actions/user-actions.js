@@ -2,6 +2,7 @@
 // import $ from 'jquery'
 export const ADD_TODO = 'ADD_TODO'
 export const SUBMIT_TODO = 'todo:saveTodo'
+export const CREATE_PROFILE = 'CREATE_PROFILE'
 
 export function newTodo (newTodo) {
   console.log(newTodo, 'new Todo')
@@ -23,5 +24,3 @@ export function saveTodo (value) {
     }
   }
 }
-
-

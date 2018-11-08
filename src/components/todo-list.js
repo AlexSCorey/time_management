@@ -19,6 +19,8 @@ class TodoList extends Component {
                 <td>{todo.title}</td>
                 <td>{todo.duration}</td>
                 <td>{todo.date}</td>
+                <td><i className='far fa-edit' /></td>
+                <td><i className='fa fa-trash' /></td>
               </tr>)}
           </tbody>
         </table>

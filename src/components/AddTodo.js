@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Label, Input, Button, Dropdown, DropdownTrigger, Icon, DropdownMenu, DropdownContent, DropdownDivider, DropdownItem } from 'bloomer'
+import { Label, Input, Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownContent, DropdownDivider, DropdownItem } from 'bloomer'
 
 class AddTodo extends Component {
   constructor (props) {
@@ -51,7 +51,7 @@ class AddTodo extends Component {
             <Dropdown isActive={this.state.dropDownHour} >
               <DropdownTrigger>
                 <Button aria-haspopup='true' value='hour' aria-controls='dropdown-menu' onClick={e => this.activateDropdown(e, 'hour')} className='dropDownBtn'>
-                  {this.state.hour} <i class='fas fa-angle-down' />
+                  {this.state.hour} <i className='fas fa-angle-down' />
                 </Button>
               </DropdownTrigger>
               <DropdownMenu >
@@ -73,7 +73,7 @@ class AddTodo extends Component {
             <Dropdown isActive={this.state.dropDownMin} className='btn'>
               <DropdownTrigger>
                 <Button aria-haspopup='true' value='min' aria-controls='dropdown-menu' onClick={e => this.activateDropdown(e)} className='dropDownBtn'>
-                  {this.state.min} <i class='fas fa-angle-down' />
+                  {this.state.min} <i className='fas fa-angle-down' />
                 </Button>
               </DropdownTrigger>
               <DropdownMenu >
