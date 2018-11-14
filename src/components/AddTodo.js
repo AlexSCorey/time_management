@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-import { Label, Input, Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownContent, DropdownDivider, DropdownItem } from 'bloomer'
+import { Label, Input, Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownContent, DropdownItem, LevelItem, Field, Level, LevelLeft, LevelRight } from 'bloomer'
 
 class AddTodo extends Component {
   constructor (props) {
     super(props)
     this.state = {
       value: '',
-      hour: '0',
-      min: '0',
+      duration: undefined,
       dropDownHour: false,
       dropDownMin: false
     }
@@ -33,63 +32,74 @@ class AddTodo extends Component {
   }
   changeHour (e, value) {
     e.preventDefault()
-    this.setState(state => ({ hour: value,
-      dropDownHour: !state.dropDownHour }))
+    let time = value * 60
+    if (value === 0) {
+      this.setState(state => ({ duration: undefined,
+        dropDownHour: !state.dropDownHour }))
+    } else if (this.state.duration) {
+      this.setState(state => ({ duration: state.duration + time,
+        dropDwonHour: !state.dropDownHour }))
+    } else {
+      this.setState(state => ({ duration: time,
+        dropDownHour: !state.dropDownHour }))
+    }
   }
   changeMin (e, value) {
     e.preventDefault()
-    this.setState(state => ({ min: value,
-      dropDownMin: !state.dropDownMin }))
+    if (this.state.duration) {
+      this.setState(state => ({ duration: state.duration + value,
+        dropDownMin: !state.dropDownMin }))
+    } else {
+      this.setState(state => ({ duration: value,
+        dropDownMin: !state.dropDownMin }))
+    }
   }
   render () {
+    let { duration } = this.state
     return (
       <div className='container'>
-        <Label>Add new To do item</Label>
-        <form >
-          <Input value={this.state.value} onChange={this.onNewTodo} />
-          <div className='dropDownContainer'>
-            <Dropdown isActive={this.state.dropDownHour} >
-              <DropdownTrigger>
-                <Button aria-haspopup='true' value='hour' aria-controls='dropdown-menu' onClick={e => this.activateDropdown(e, 'hour')} className='dropDownBtn'>
-                  {this.state.hour} <i className='fas fa-angle-down' />
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu >
-                <DropdownContent >
-                  <DropdownItem onClick={e => { this.changeHour(e, '1') }}>1 Hour</DropdownItem>
-                  <DropdownDivider />
-                  <DropdownItem onClick={e => { this.changeHour(e, '2') }}>2 Hours</DropdownItem>
-                  <DropdownDivider />
-                  <DropdownItem onClick={e => { this.changeHour(e, '3') }}>3 Hours</DropdownItem>
-                  <DropdownDivider />
-                  <DropdownItem onClick={e => { this.changeHour(e, '4') }}>4 Hours</DropdownItem>
-                  <DropdownDivider />
-                  <DropdownItem onClick={e => { this.changeHour(e, '5') }}>5 Hours</DropdownItem>
-                  <DropdownDivider />
-                  <DropdownItem onClick={e => { this.changeHour(e, '6') }}>6 Hours</DropdownItem>
-                </DropdownContent>
-              </DropdownMenu>
-            </Dropdown>
-            <Dropdown isActive={this.state.dropDownMin} className='btn'>
-              <DropdownTrigger>
-                <Button aria-haspopup='true' value='min' aria-controls='dropdown-menu' onClick={e => this.activateDropdown(e)} className='dropDownBtn'>
-                  {this.state.min} <i className='fas fa-angle-down' />
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu >
-                <DropdownContent>
-                  <DropdownItem onClick={e => { this.changeMin(e, '15') }}>15 Mins</DropdownItem>
-                  <DropdownDivider />
-                  <DropdownItem onClick={e => { this.changeMin(e, '30') }}>30 Mins</DropdownItem>
-                  <DropdownDivider />
-                  <DropdownItem onClick={e => { this.changeMin(e, '45') }}>45 Mins</DropdownItem>
-                </DropdownContent>
-              </DropdownMenu>
-            </Dropdown>
-            <div />
-          </div>
-          <Button type='submit' onClick={this.onSaveTodo} className='button'>Save</Button>
-        </form>
+        <Label className='title'>Add new To do item</Label>
+        <Level>
+          <LevelItem isFlexible='true'>
+            <Field hasAddons>
+              <Input value={this.state.value} onChange={this.onNewTodo} className='input' />
+            </Field>
+            <Field hasAddons>
+              <Dropdown isActive={this.state.dropDownHour} className='btn' >
+                <DropdownTrigger>
+                  <Button aria-haspopup='true' isAlign='left' value={duration ? duration / 60 : 'Hour'} aria-controls='dropdown-menu' onClick={e => this.activateDropdown(e, 'hour')} className='hourBtn dropDownBtn'> <i className='fas fa-angle-down' />{duration ? duration / 60 : 'Hour'}
+                  </Button>
+                </DropdownTrigger>
+                <DropdownMenu >
+                  <DropdownContent >
+                    <DropdownItem className='dropDownItem' value={0} onClick={e => { this.changeHour(e, 0) }}>0 Hours</DropdownItem>
+                    <DropdownItem className='dropDownItem' value={1} onClick={e => { this.changeHour(e, 1) }}>1 Hour</DropdownItem>
+                    <DropdownItem className='dropDownItem' onClick={e => { this.changeHour(e, 2) }}>2 Hours</DropdownItem>
+                    <DropdownItem className='dropDownItem' onClick={e => { this.changeHour(e, 3) }}>3 Hours</DropdownItem>
+                    <DropdownItem className='dropDownItem' onClick={e => { this.changeHour(e, 4) }}>4 Hours</DropdownItem>
+                    <DropdownItem className='dropDownItem' onClick={e => { this.changeHour(e, 5) }}>5 Hours</DropdownItem>
+                    <DropdownItem className='dropDownItem' onClick={e => { this.changeHour(e, 6) }}>6 Hours</DropdownItem>
+                  </DropdownContent>
+                </DropdownMenu>
+              </Dropdown>
+              <Dropdown isActive={this.state.dropDownMin} className='btn'>
+                <DropdownTrigger>
+                  <Button aria-haspopup='true' value='min' aria-controls='dropdown-menu' onClick={e => this.activateDropdown(e)} className='minBtn dropDownBtn'>
+                    {this.state.min} <i className='fas fa-angle-down' />Minutes
+                  </Button>
+                </DropdownTrigger>
+                <DropdownMenu>
+                  <DropdownContent>
+                    <DropdownItem className='dropDownItem' onClick={e => { this.changeMin(e, 15) }}>15 Mins</DropdownItem>
+                    <DropdownItem className='dropDownItem' onClick={e => { this.changeMin(e, 30) }}>30 Mins</DropdownItem>
+                    <DropdownItem className='dropDownItem' onClick={e => { this.changeMin(e, 45) }}>45 Mins</DropdownItem>
+                  </DropdownContent>
+                </DropdownMenu>
+              </Dropdown>
+              <Button type='submit' onClick={this.onSaveTodo} className='saveBtn'>Save</Button>
+            </Field>
+          </LevelItem>
+        </Level>
       </div>
     )
   }

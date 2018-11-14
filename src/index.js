@@ -21,7 +21,8 @@ const store = createStore(allReducers, {
   todos: [
     {
       'todo_id': 1,
-      'duration': 40,
+      'duration': 60,
+      'percent': 2.5,
       'title': 'Todo 1',
       'date': moment('11-25-2018').format('MM-DD-YYYY'),
       'todo_start_time': null,
@@ -29,14 +30,16 @@ const store = createStore(allReducers, {
     },
     { 'todo_id': 2,
       'title': 'Todo 2',
-      'duration': 30,
-      'date': moment('11-26-2018').format('MM-DD-YYY'),
+      'duration': 495,
+      'percent': 40,
+      'date': moment('11-26-2018').format('MM-DD-YYYY'),
       'todo_start_time': null,
       'complete': false
     },
     { 'todo_id': 3,
       'title': 'Todo 3',
-      'duration': 20,
+      'duration': 10,
+      'percent': 1.4,
       'date': moment('11-27-2018').format('MM-DD-YYYY'),
       'todo_start_time': null,
       'complete': false

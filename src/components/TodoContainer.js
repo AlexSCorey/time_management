@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import TodoList from './todo-list'
+import TodoList from './DailyTodos'
 import AddTodo from './AddTodo'
 
 class TodoContainer extends Component {

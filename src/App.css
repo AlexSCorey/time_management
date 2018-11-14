@@ -26,12 +26,67 @@ code {
 }
 .dropDownBtn{
   margin: 0 auto;
-  padding:50px;
+  padding:0px 150px;
   width: 100px;
 }
+.dropdown-content{
+  margin: 0 auto;
+  width: 100px;
+}
+.title{
+  text-align: center
+}
+.hourBtn{
+margin-right:30px;
+}
+.minBtn{
+  margin-left:30px;
+  margin-right:60px
+}
+.saveBtn{
+  margin-left:60px;
+}
+.level-item{
+  margin-left:auto;
+  margin-right:auto;
+  width:50%
+}
+/* .input{
+  min-width: 300px
+} */
 .active{
   background-color: red
 }
 .unactive{
   display: none;
+}
+.proBtnCntr{
+  display:flex;
+  justify-content:center;
+  align-content:space-between
+}
+.dropdownBody{
+  display:flex;
+  justify-content: center;
+  align-content:space-between;
+  width:0px;
+  height:0px
+}
+.dropdown{
+  height:50px;
+  width: 75px;
+  border:none
+}
+.tableContainer{
+ min-height:75vh;
+ width:400px;
+ background-color:red;
+ margin: 0 auto;
+}
+.tbodyContainer{
+  width:400px;
+}
+.row{
+  background-color:blue;
+  margin: 0 auto;
 }
