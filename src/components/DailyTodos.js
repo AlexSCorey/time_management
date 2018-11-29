@@ -1,58 +1,49 @@
 import React, { Component } from 'react'
 import moment from 'moment'
-import duration from 'moment-duration-format'
+// import duration from 'moment-duration-format'
 
-class TodoList extends Component {
-  constructor () {
-    super()
-    this.state = {
-
-    }
-  }
+class DailyTodo extends Component {
   render () {
-    let { todos } = this.props
-    return (
-      <div className='container'>
-        <div className='tableContainer'>
-          <table className='tbodyContainer'>
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Duration</th>
-                <th>Date</th>
-                <th>Edit</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody >
-              {todos.map((todo) =>
-                <tr key={todo.id} height={`${todo.percent}vh`} className='row'>
-                  <td>{todo.title}</td>
-                  <td>{moment.duration(todo.duration, 'minutes').format('h:mm')}</td>
-                  <td>{todo.date}</td>
-                  <td><i className='far fa-edit' /></td>
-                  <td><i className='fa fa-trash' /></td>
-                </tr>)}
-              <tr height={'33vh'} className='row'>
-                <td>Work</td>
-                <td>8 hours</td>
-                <td>Everyday</td>
-                <td />
-                <td />
-              </tr>
-              <tr height={'30vh'} className='row'>
-                <td>Sleep</td>
-                <td>8 Hours</td>
-                <td>Everyday</td>
-                <td />
-                <td />
-              </tr>
-            </tbody>
-          </table>
+    // let { occupiedTimePerc, occupiedTime, freeTime, freeTimePerc } = this.state
+    let { durations } = this.props
+    let total
+    durations.reduce((acc, current) => {
+      return (total = acc + current)
+    })
+    let workAndSleep = 960
+    let occupiedTime = total + workAndSleep
+    let occupiedTimePerc = Math.round(occupiedTime / 1440 * 100, 0)
+    let freeTime = Math.round(1440 - occupiedTime)
+    let freeTimePerc = Math.round(freeTime / 1440 * 100)
+    if (durations) {
+      return (
+        <div>
+          <div className='graphs'>
+            <div className='graphContainer'>
+              <div className='headerAndTime'>
+                <div className='timeTitle'>Free Time</div>
+                <div className='dailyTodoRow'>{moment.duration(freeTime, 'minutes').format('h:mm')}</div>
+              </div>
+              <div className='freeTime time'>
+                <div className='freeTimePerc perc' style={{ height: `${freeTimePerc}%` }}>{freeTimePerc}%</div>
+              </div>
+            </div>
+            <div className='graphContainer'>
+              <div className='headerAndTime occupiedTime'>
+                <div className='timeTitle'>Occupied Time</div>
+                <div className='dailyTodoRow'>{moment.duration(occupiedTime, 'minutes').format('h:mm')}</div>
+              </div>
+              <div className='occupiedTime time'>
+                <div className='occupiedTimePerc perc' style={{ height: `${occupiedTimePerc}%` }}>{occupiedTimePerc}%</div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return (<div>Loading</div>)
+    }
   }
 }
 
-export default TodoList
+export default DailyTodo

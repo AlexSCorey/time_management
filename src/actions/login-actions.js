@@ -1,6 +1,7 @@
 
 export const LOGIN = 'LOGIN'
 export const REGISTER = 'REGISTER'
+export const LOGOUT = 'LOGOUT'
 
 export function login (username, password) {
   return {
@@ -25,5 +26,11 @@ export function register (username, password) {
       username: `${username}`,
       password: `${password}`
     }
+  }
+}
+export function logOut () {
+  return {
+    type: LOGOUT,
+    payload: {}
   }
 }

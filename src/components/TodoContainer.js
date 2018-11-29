@@ -1,21 +1,24 @@
 import React, { Component } from 'react'
 
-import TodoList from './DailyTodos'
+import DailyTodo from './DailyTodos'
 import AddTodo from './AddTodo'
+import TodoList from './TodoList'
 
 class TodoContainer extends Component {
   render () {
-    let { todos, onSaveTodo, onNewTodo, creatingTodo } = this.props
-    if (todos.length > 0) {
+    let { todos, onSaveTodo, onNewTodo, creatingTodo, onAddDuration } = this.props
+    if (todos && todos.length > 0) {
       return (
-        <div>
-          <AddTodo onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />
-          <TodoList todos={todos} key={todos.id} />
+        <div >
+          <AddTodo onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} onAddDuration={onAddDuration} creatingTodo={creatingTodo} />
+          <div className='todoContainer'>
+            <TodoList className='todoList' todos={todos} key={todos.id} />
+          </div>
         </div>
       )
     } else {
       return (
-        <TodoList todos={todos} key={todos.id} />
+        <TodoList todos={todos} />
       )
     }
   }

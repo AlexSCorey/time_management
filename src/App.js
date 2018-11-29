@@ -3,87 +3,81 @@ import './App.css'
 import { bindActionCreators } from 'redux'
 import { createSelector } from 'reselect'
 import { connect } from 'react-redux'
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect
-} from 'react-router-dom'
-import './index.css'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+// import './index.css'
 import 'bulma/css/bulma.css'
-import 'firebase'
-
-import { newTodo, saveTodo } from './actions/user-actions'
+// import 'firebase'
+import { newTodo, saveTodo, saveProfile, addDuration, getLastWeekTodos, getNextWeekTodos } from './actions/user-actions'
 import { login, register } from './actions/login-actions'
 import TodoContainer from './components/TodoContainer'
 import LoginContainer from './components/LoginContainer'
 import Profile from './components/Profile'
+import DailyTodosContainer from './components/DailyTodosContainer'
+import Header from './components/Header'
 
 class App extends Component {
   render () {
-    let { todos, onSaveTodo, onNewTodo, creatingTodo, onLogin, onRegister } = this.props
+    let { todos, durations, onSaveTodo, onNewTodo, creatingTodo, onLogin, onRegister, onSaveProfile, profile, onAddDuration, onGetNextWeekTodos, onGetLastWeekTodos, currentWeek } = this.props
     return (
       <Router>
-        <div className='main'>
-          <div className='routes'>
-            <Route path='/login' render={() =>
-              <LoginContainer onLogin={onLogin} onRegister={onRegister} />}
-            />
-            <Route path='/profile' render={() =>
-              <Profile />}
-            />
-            <Route path='/list' render={() =>
-              <TodoContainer todos={todos} key={todos.id} onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />}
-            />
+        <div className='App'>
+          <Header />
+          <div className='main'>
+            <div className='routes'>
+              <Route path='/login' render={() =>
+                <LoginContainer onLogin={onLogin} onRegister={onRegister} />}
+              />
+              <Route path='/profile' render={() =>
+                <Profile onSaveProfile={onSaveProfile} profile={profile} />}
+              />
+              <Route path='/list' render={() =>
+                <TodoContainer todos={todos} durations={durations} onAddDuration={onAddDuration} onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />}
+              />
+              <Route path='/dailytodos' render={() =>
+                <DailyTodosContainer durations={durations} onGetNextWeekTodos={onGetNextWeekTodos} onGetLastWeekTodos={onGetLastWeekTodos} currentWeek={currentWeek} />}
+              />
+            </div>
           </div>
         </div>
       </Router>
     )
-
-    // let { todos, onSaveTodo, onNewTodo, creatingTodo } = this.props
-    // if (this.props.currentUser) {
-    //   return (
-    //     <TodoContainer todos={todos} key={todos.id} onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />
-    //   )
-    // } else {
-    //   return (
-    //     <div>
-    //       <TodoContainer todos={todos} key={todos.id} onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />
-    //       {/* <LoginContainer onLogin={onLogin} onRegister={onRegister} /> */}
-    //     </div>
-    //   )
-    // }
   }
 }
-
-// const userSelector = createSelector(
-//   state => state.user,
-//   user => user
-// )
+const currentWeekSelector = createSelector(
+  state => state.currentWeek,
+  currentWeek => currentWeek
+)
+const durationsSelector = createSelector(
+  state => state.durations,
+  durations => durations
+)
 const todoSelector = createSelector(
   state => state.todos,
   todos => todos
 )
 const mapStateToProps = createSelector(
-  // userSelector,
   todoSelector,
-  (
-    // user,
-    todos) => ({
-    // user,
-    todos
-  })
+  durationsSelector,
+  currentWeekSelector,
+  (todos, durations, currentWeek) => ({ todos: todos,
+    durations: durations,
+    currentWeek: currentWeek })
 )
 const mapActionsToProps = {
   onNewTodo: newTodo,
   onSaveTodo: saveTodo,
   onLogin: login,
-  onRegister: register
+  onRegister: register,
+  onSaveProfile: saveProfile,
+  onAddDuration: addDuration,
+  onGetNextWeekTodos: getNextWeekTodos,
+  onGetLastWeekTodos: getLastWeekTodos
 }
-const Guard = ({ redirectTo, condition, children }) => {
-  if (condition) {
-    return children
-  } else {
-    return <Redirect to={redirectTo} />
-  }
-}
+// const Guard = ({ redirectTo, condition, children }) => {
+//   if (condition) {
+//     return children
+//   } else {
+//     return <Redirect to={redirectTo} />
+//   }
+// }
 export default connect(mapStateToProps, mapActionsToProps)(App)
