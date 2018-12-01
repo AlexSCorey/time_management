@@ -4,8 +4,8 @@ import moment from 'moment'
 
 class DailyTodo extends Component {
   render () {
-    // let { occupiedTimePerc, occupiedTime, freeTime, freeTimePerc } = this.state
-    let { durations } = this.props
+    // let weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    let { durations, todos } = this.props
     let total
     durations.reduce((acc, current) => {
       return (total = acc + current)

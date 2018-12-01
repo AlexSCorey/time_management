@@ -34,7 +34,7 @@ class App extends Component {
                 <TodoContainer todos={todos} durations={durations} onAddDuration={onAddDuration} onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />}
               />
               <Route path='/dailytodos' render={() =>
-                <DailyTodosContainer durations={durations} onGetNextWeekTodos={onGetNextWeekTodos} onGetLastWeekTodos={onGetLastWeekTodos} currentWeek={currentWeek} />}
+                <DailyTodosContainer durations={durations} onGetNextWeekTodos={onGetNextWeekTodos} onGetLastWeekTodos={onGetLastWeekTodos} todos={todos} currentWeek={currentWeek} />}
               />
             </div>
           </div>
