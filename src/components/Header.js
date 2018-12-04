@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Navbar, NavbarStart, NavbarItem } from 'bloomer'
+import { Navbar, NavbarItem } from 'bloomer'
 import { Link } from 'react-router-dom'
 
 class Header extends Component {
