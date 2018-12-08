@@ -266,7 +266,7 @@ const store = createStore(allReducers, {
       'complete': false
     }
   ],
-  durations: [60, 95, 10],
+  // durations: [60, 95, 10],
   currentWeek: moment(new Date()).startOf('week').format('MM-DD-YYYY')
 },
 allStoreEnhancers
