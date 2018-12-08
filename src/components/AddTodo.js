@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Label, Input, Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownContent, DropdownItem, LevelItem, Field, Level, LevelLeft, LevelRight } from 'bloomer'
+import { Label, Input, Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownContent, DropdownItem } from 'bloomer'
 
 class AddTodo extends Component {
   constructor (props) {
