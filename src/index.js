@@ -30,7 +30,7 @@ const store = createStore(allReducers, {
       'percent': 2.5,
       'title': 'Todo 1',
       'date': moment('11-25-2018').format('MM-DD-YYYY'),
-      'todo_start_time': null,
+      'todo_start_time': moment().hour('12').min('00').format('h:mma'),
       'complete': false
     },
     { 'todo_id': 2,
@@ -38,7 +38,7 @@ const store = createStore(allReducers, {
       'duration': 95,
       'percent': 40,
       'date': moment('11-25-2018').format('MM-DD-YYYY'),
-      'todo_start_time': null,
+      'todo_start_time': moment(new Date()).hour('12').min('15').format('h:mma'),
       'complete': false
     },
     { 'todo_id': 3,
@@ -46,7 +46,7 @@ const store = createStore(allReducers, {
       'duration': 10,
       'percent': 1.4,
       'date': moment('11-25-2018').format('MM-DD-YYYY'),
-      'todo_start_time': null,
+      'todo_start_time': moment(new Date()).hour('5').min('00').format('h:mma'),
       'complete': false
     },
     { 'todo_id': 4,
@@ -54,7 +54,7 @@ const store = createStore(allReducers, {
       'duration': 95,
       'percent': 40,
       'date': moment('11-25-2018').format('MM-DD-YYYY'),
-      'todo_start_time': null,
+      'todo_start_time': moment(new Date()).hour('6').min('00').format('h:mma'),
       'complete': false
     },
     { 'todo_id': 5,
@@ -62,7 +62,7 @@ const store = createStore(allReducers, {
       'duration': 95,
       'percent': 40,
       'date': moment('11-26-2018').format('MM-DD-YYYY'),
-      'todo_start_time': null,
+      'todo_start_time': moment(new Date()).hour('9').min('00').format('h:mma'),
       'complete': false
     },
     { 'todo_id': 6,
@@ -70,7 +70,7 @@ const store = createStore(allReducers, {
       'duration': 95,
       'percent': 40,
       'date': moment('11-26-2018').format('MM-DD-YYYY'),
-      'todo_start_time': null,
+      'todo_start_time': moment().hour('8').min('00').format('h:mma'),
       'complete': false
     },
     { 'todo_id': 7,
@@ -78,7 +78,7 @@ const store = createStore(allReducers, {
       'duration': 95,
       'percent': 40,
       'date': moment('11-26-2018').format('MM-DD-YYYY'),
-      'todo_start_time': null,
+      'todo_start_time': moment().hour('10').min('00').format('h:mma'),
       'complete': false
     },
     { 'todo_id': 8,
@@ -86,7 +86,7 @@ const store = createStore(allReducers, {
       'duration': 95,
       'percent': 40,
       'date': moment('11-26-2018').format('MM-DD-YYYY'),
-      'todo_start_time': null,
+      'todo_start_time': moment().hour('15').min('00').format('h:mma'),
       'complete': false
     },
     { 'todo_id': 9,
@@ -94,7 +94,7 @@ const store = createStore(allReducers, {
       'duration': 95,
       'percent': 40,
       'date': moment('11-26-2018').format('MM-DD-YYYY'),
-      'todo_start_time': null,
+      'todo_start_time': moment().hour('14').min('00').format('h:mma'),
       'complete': false
     },
     { 'todo_id': 10,
@@ -102,7 +102,7 @@ const store = createStore(allReducers, {
       'duration': 95,
       'percent': 40,
       'date': moment('11-27-2018').format('MM-DD-YYYY'),
-      'todo_start_time': null,
+      'todo_start_time': moment().hour('16').min('00').format('h:mma'),
       'complete': false
     },
     { 'todo_id': 11,
@@ -110,7 +110,7 @@ const store = createStore(allReducers, {
       'duration': 95,
       'percent': 40,
       'date': moment('11-27-2018').format('MM-DD-YYYY'),
-      'todo_start_time': null,
+      'todo_start_time': moment().hour('8').min('00').format('h:mma'),
       'complete': false
     },
     { 'todo_id': 12,
@@ -118,7 +118,7 @@ const store = createStore(allReducers, {
       'duration': 95,
       'percent': 40,
       'date': moment('11-27-2018').format('MM-DD-YYYY'),
-      'todo_start_time': null,
+      'todo_start_time': moment().hour('9').min('00').format('h:mma'),
       'complete': false
     },
     { 'todo_id': 13,
@@ -126,7 +126,7 @@ const store = createStore(allReducers, {
       'duration': 800,
       'percent': 40,
       'date': moment('11-27-2018').format('MM-DD-YYYY'),
-      'todo_start_time': null,
+      'todo_start_time': moment().hour('10').min('00').format('h:mma'),
       'complete': false
     },
     { 'todo_id': 14,
@@ -134,7 +134,7 @@ const store = createStore(allReducers, {
       'duration': 800,
       'percent': 40,
       'date': moment('11-27-2018').format('MM-DD-YYYY'),
-      'todo_start_time': null,
+      'todo_start_time': moment().hour('10').min('00').format('h:mma'),
       'complete': false
     },
     { 'todo_id': 15,
