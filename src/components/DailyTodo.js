@@ -6,6 +6,7 @@ class DailyTodo extends Component {
     return (
       <div>
         {weekDayTodo.durations.map((duration) => {
+          //durations are causing the title to render several times
           if (weekDayTodo.todo_start_time === time) {
             return (
               <tr>

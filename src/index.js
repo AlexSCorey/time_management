@@ -29,7 +29,7 @@ const store = createStore(allReducers, {
       'title': 'Todo 1',
       'date': moment('11-25-2018').format('MM-DD-YYYY'),
       'todo_start_time': moment({ hour: '11', minute: '00' }).format('h:mma'),
-      'durations': [moment({ hour: '11', minute: '45' }).format('h:mma'), moment({ hour: '11', minute: '30' }).format('h:mma')],
+      'durations': [moment({ hour: '11', minute: '45' }).format('h:mma'), moment({ hour: '11', minute: '30' }).format('h:mma'), moment({ hour: '11', minute: '15' }).format('h:mma')],
       'complete': false
     },
     { 'todo_id': 2,
