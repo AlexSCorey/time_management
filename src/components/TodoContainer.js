@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import DailyTodo from './DailyTodos'
 import AddTodo from './AddTodo'
 import TodoList from './TodoList'
 

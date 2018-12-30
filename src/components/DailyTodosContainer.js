@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import { Chart } from 'react-google-charts'
 
-import DailyTodos from './DailyTodos'
 import WeeklyDateRange from './WeeklyDateRange'
 import DailyTodoTable from './DailyTodoTable'
 
@@ -18,7 +17,6 @@ class DailyTodosContainer extends Component {
             return (
               <div>
                 <h1 className='weekDayTitle'>{weekDay}</h1>
-                {/* <DailyTodos key={`${weekDay}`} className='dailyTodo' todos={todos} durations={durations} weekDay={weekDay} /> */}
                 <DailyTodoTable key={`${weekDay}`}className='dailyTodo' todos={todos} durations={durations} weekDay={weekDay} />
               </div>
             )
