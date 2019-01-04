@@ -17,7 +17,7 @@ import Header from './components/Header'
 
 class App extends Component {
   render () {
-    let { todos, durations, onSaveTodo, onNewTodo, creatingTodo, onLogin, onRegister, onSaveProfile, profile, onAddDuration, onGetNextWeekTodos, onGetLastWeekTodos, currentWeek } = this.props
+    let { todos, durations, onSaveTodo, onNewTodo, creatingTodo, onLogin, onRegister, onSaveProfile, profile, onAddDuration, onGetNextWeekTodos, onGetLastWeekTodos, currentWeek, weekDays } = this.props
     return (
       <Router>
         <div className='App'>
@@ -34,7 +34,7 @@ class App extends Component {
                 <TodoContainer todos={todos} durations={durations} onAddDuration={onAddDuration} onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />}
               />
               <Route path='/dailytodos' render={() =>
-                <DailyTodosContainer durations={durations} onGetNextWeekTodos={onGetNextWeekTodos} onGetLastWeekTodos={onGetLastWeekTodos} todos={todos} currentWeek={currentWeek} />}
+                <DailyTodosContainer durations={durations} onGetNextWeekTodos={onGetNextWeekTodos} onGetLastWeekTodos={onGetLastWeekTodos} todos={todos} weekDays={weekDays} currentWeek={currentWeek} />}
               />
             </div>
           </div>
@@ -51,6 +51,10 @@ const durationsSelector = createSelector(
   state => state.durations,
   durations => durations
 )
+const weekDaySelector = createSelector(
+  state => state.weekDays,
+  weekDays => weekDays
+)
 const todoSelector = createSelector(
   state => state.todos,
   todos => todos
@@ -59,9 +63,11 @@ const mapStateToProps = createSelector(
   todoSelector,
   durationsSelector,
   currentWeekSelector,
-  (todos, durations, currentWeek) => ({ todos: todos,
+  weekDaySelector,
+  (todos, durations, currentWeek, weekDays) => ({ todos: todos,
     durations: durations,
-    currentWeek: currentWeek })
+    currentWeek: currentWeek,
+    weekDays: weekDays })
 )
 const mapActionsToProps = {
   onNewTodo: newTodo,

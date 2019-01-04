@@ -7,8 +7,9 @@ import DailyTodoTable from './DailyTodoTable'
 
 class DailyTodosContainer extends Component {
   render () {
-    let { todos, durations, onGetLastWeekTodos, onGetNextWeekTodos, currentWeek } = this.props
-    const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    let { todos, durations, onGetLastWeekTodos, onGetNextWeekTodos, currentWeek, weekDays } = this.props
+    console.log(weekDays, 'weekDays')
+    // const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     return (
       <div>
         <WeeklyDateRange onGetLastWeekTodos={onGetLastWeekTodos} onGetNextWeekTodos={onGetNextWeekTodos} currentWeek={currentWeek} />

@@ -11,6 +11,7 @@ import todoReducer from './reducers/todo-reducer'
 import durationReducer from './reducers/duration-reducer'
 import profileReducer from './reducers/profile-reducer'
 import currentWeekReducer from './reducers/update-week'
+import weekDayReducer from './reducers/weekDay-reducer'
 
 const allStoreEnhancers = compose(
   applyMiddleware(thunk),
@@ -20,7 +21,8 @@ const allReducers = combineReducers({
   todos: todoReducer,
   durations: durationReducer,
   profile: profileReducer,
-  currentWeek: currentWeekReducer
+  currentWeek: currentWeekReducer,
+  weekDays: weekDayReducer
 })
 const store = createStore(allReducers, {
   todos: [

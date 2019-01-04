@@ -29,6 +29,7 @@ class DailyTodoTable extends Component {
                 return (
                   <tr>
                     <td>{time}</td>
+                    
                     {weekDayTodos.map((weekDayTodo) => {
                       return (
                         <DailyTodo time={time} weekDayTodo={weekDayTodo} />
