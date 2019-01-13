@@ -77,12 +77,12 @@ margin-right:30px;
   margin-top:5px;
 }
 .tableContainer{
- width:400px;
+ width:100px;
  background-color:red;
  margin: 0 auto;
 }
 .tbodyContainer{
-  width:400px;
+  width:100px;
 }
 .row{
   background-color:blue;
@@ -109,21 +109,20 @@ margin-right:30px;
 }
 .weeklyTodoContainer{
   display:flex;
-  width:900px;
+  justify-content: center;
+  padding:0;
+}
+.weeklyTodos{
+  min-width: 200px;
+  padding:15px, 0;
 }
 .weekDayTitle{
-  margin-left: 250px;
-  width:500px;
-}
-/* .graphs{
-  display: flex;
-  padding-top: 5px;
-} */
-/* .graphContainer{
-  display: flex;
-  padding-top: 5px;
+  margin-left: 40px;
   width:100px;
-} */
+}
+.todoCell{
+  background-color: aquamarine;
+}
 .perc{
   background-color: red;
   display:block;
@@ -136,18 +135,6 @@ margin-right:30px;
   border: 1px solid black;
   margin:0 5px;
 }
-/* .timeTitle{
-  width:150px;
-} */
-/* .headerAndTime{
-  display:flex;
-  justify-content: space-around;
-  transform:rotate(270deg);
-  padding-top:250px;
-} */
-/* .occupiedTime{
-  padding-top:260px;
-} */
 #pieChart{
   border:1px solid red
 }
@@ -179,17 +166,7 @@ margin-right:30px;
   animation-duration: 3s;
   animation-name:slidein;
 }
-@keyframes slidein{
-  from{
-    margin-right:0%;
-    width:0%;
-    font-display:none
-  }
-  to{
-    margin-right:100%;
-    width: 100%;
-  }
-}
+
 .proBtnCtnr{
   display:flex;
 }

@@ -4,20 +4,19 @@ import { bindActionCreators } from 'redux'
 import { createSelector } from 'reselect'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
-import { Chart } from 'react-google-charts'
 import 'bulma/css/bulma.css'
 // import 'firebase'
 import { newTodo, saveTodo, saveProfile, addDuration, getLastWeekTodos, getNextWeekTodos } from './actions/user-actions'
 import { login, register } from './actions/login-actions'
-import TodoContainer from './components/TodoContainer'
-import LoginContainer from './components/LoginContainer'
+import TodoContainer from './components/TodoContainer/TodoContainer'
+import LoginContainer from './components/LoginAndRegister/LoginContainer'
 import Profile from './components/Profile'
-import DailyTodosContainer from './components/DailyTodosContainer'
+import DailyTodosContainer from './components/DailyCalendarTodo/DailyTodosContainer'
 import Header from './components/Header'
 
 class App extends Component {
   render () {
-    let { todos, durations, onSaveTodo, onNewTodo, creatingTodo, onLogin, onRegister, onSaveProfile, profile, onAddDuration, onGetNextWeekTodos, onGetLastWeekTodos, currentWeek, weekDays } = this.props
+    let { todos, timeOfDay, onSaveTodo, onNewTodo, creatingTodo, onLogin, onRegister, onSaveProfile, profile, onAddDuration, onGetNextWeekTodos, onGetLastWeekTodos, currentWeek, weekDays } = this.props
     return (
       <Router>
         <div className='App'>
@@ -31,10 +30,10 @@ class App extends Component {
                 <Profile onSaveProfile={onSaveProfile} profile={profile} />}
               />
               <Route path='/list' render={() =>
-                <TodoContainer todos={todos} durations={durations} onAddDuration={onAddDuration} onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />}
+                <TodoContainer todos={todos} timeOfDay={timeOfDay} onAddDuration={onAddDuration} onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />}
               />
               <Route path='/dailytodos' render={() =>
-                <DailyTodosContainer durations={durations} onGetNextWeekTodos={onGetNextWeekTodos} onGetLastWeekTodos={onGetLastWeekTodos} todos={todos} weekDays={weekDays} currentWeek={currentWeek} />}
+                <DailyTodosContainer timeOfDay={timeOfDay} onGetNextWeekTodos={onGetNextWeekTodos} onGetLastWeekTodos={onGetLastWeekTodos} todos={todos} weekDays={weekDays} currentWeek={currentWeek} />}
               />
             </div>
           </div>
@@ -47,9 +46,9 @@ const currentWeekSelector = createSelector(
   state => state.currentWeek,
   currentWeek => currentWeek
 )
-const durationsSelector = createSelector(
-  state => state.durations,
-  durations => durations
+const timeOfDaySelector = createSelector(
+  state => state.timeOfDay,
+  timeOfDay => timeOfDay
 )
 const weekDaySelector = createSelector(
   state => state.weekDays,
@@ -61,11 +60,11 @@ const todoSelector = createSelector(
 )
 const mapStateToProps = createSelector(
   todoSelector,
-  durationsSelector,
+  timeOfDaySelector,
   currentWeekSelector,
   weekDaySelector,
-  (todos, durations, currentWeek, weekDays) => ({ todos: todos,
-    durations: durations,
+  (todos, timeOfDay, currentWeek, weekDays) => ({ todos: todos,
+    timeOfDay: timeOfDay,
     currentWeek: currentWeek,
     weekDays: weekDays })
 )

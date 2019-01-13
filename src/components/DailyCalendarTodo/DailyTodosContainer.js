@@ -1,24 +1,21 @@
 import React, { Component } from 'react'
 import moment from 'moment'
-import { Chart } from 'react-google-charts'
 
-import WeeklyDateRange from './WeeklyDateRange'
-import DailyTodoTable from './DailyTodoTable'
+import WeeklyDateRange from '../WeeklyDateRange'
+import DailyTodoTable from './DailyTodo/DailyTodoTable'
 
 class DailyTodosContainer extends Component {
   render () {
-    let { todos, durations, onGetLastWeekTodos, onGetNextWeekTodos, currentWeek, weekDays } = this.props
-    console.log(weekDays, 'weekDays')
-    // const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    let { todos, timeOfDay, onGetLastWeekTodos, onGetNextWeekTodos, currentWeek, weekDays } = this.props
     return (
       <div>
         <WeeklyDateRange onGetLastWeekTodos={onGetLastWeekTodos} onGetNextWeekTodos={onGetNextWeekTodos} currentWeek={currentWeek} />
         <div className='weeklyTodoContainer'>
           {weekDays.map((weekDay) => {
             return (
-              <div>
+              <div className='weeklyTodos'>
                 <h1 className='weekDayTitle'>{weekDay}</h1>
-                <DailyTodoTable key={`${weekDay}`}className='dailyTodo' todos={todos} durations={durations} weekDay={weekDay} />
+                <DailyTodoTable key={`${weekDay}`}className='dailyTodo' todos={todos} timeOfDay={timeOfDay} weekDay={weekDay} />
               </div>
             )
           })

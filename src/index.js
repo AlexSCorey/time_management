@@ -8,7 +8,7 @@ import thunk from 'redux-thunk'
 import { applyMiddleware, compose, combineReducers, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import todoReducer from './reducers/todo-reducer'
-import durationReducer from './reducers/duration-reducer'
+import timeOfDayReducer from './reducers/timeOfDay-reducer'
 import profileReducer from './reducers/profile-reducer'
 import currentWeekReducer from './reducers/update-week'
 import weekDayReducer from './reducers/weekDay-reducer'
@@ -19,7 +19,7 @@ const allStoreEnhancers = compose(
 )
 const allReducers = combineReducers({
   todos: todoReducer,
-  durations: durationReducer,
+  timeOfDay: timeOfDayReducer,
   profile: profileReducer,
   currentWeek: currentWeekReducer,
   weekDays: weekDayReducer
@@ -30,28 +30,32 @@ const store = createStore(allReducers, {
       'todo_id': 1,
       'title': 'Todo 1',
       'date': moment('11-25-2018').format('MM-DD-YYYY'),
-      'todo_start_time': moment({ hour: '11', minute: '00' }).format('h:mma'),
+      'todo_start_time': moment({ hour: '11', minute: '00' }),
+      'duration': 45,
       'durations': [moment({ hour: '11', minute: '45' }).format('h:mma'), moment({ hour: '11', minute: '30' }).format('h:mma'), moment({ hour: '11', minute: '15' }).format('h:mma')],
       'complete': false
     },
     { 'todo_id': 2,
       'title': 'Todo 2',
       'date': moment('11-25-2018').format('MM-DD-YYYY'),
-      'todo_start_time': moment({ hour: '8', minute: '00' }).format('h:mma'),
+      'todo_start_time': moment({ hour: '8', minute: '00' }),
+      'duration': 30,
       'durations': [moment({ hour: '8', minute: '45' }).format('h:mma')],
       'complete': false
     },
     { 'todo_id': 3,
       'title': 'Todo 3',
       'date': moment('11-25-2018').format('MM-DD-YYYY'),
-      'todo_start_time': moment({ hour: '9', minute: '00' }).format('h:mma'),
+      'todo_start_time': moment({ hour: '9', minute: '00' }),
+      'duration': 15,
       'durations': [moment({ hour: '9', minute: '15' }).format('h:mma'), moment({ hour: '9', minute: '30' }).format('h:mma')],
       'complete': false
     },
     { 'todo_id': 4,
       'title': 'Todo 4',
       'date': moment('11-25-2018').format('MM-DD-YYYY'),
-      'todo_start_time': moment({ hour: '10', minute: '00' }).format('h:mma'),
+      'todo_start_time': moment({ hour: '10', minute: '00' }),
+      'duration': 60,
       'durations': [moment({ hour: '10', minute: '45' }).format('h:mma')],
       'complete': false
     }
