@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import moment from 'moment'
 
 import WeeklyDateRange from '../WeeklyDateRange'
-import DailyTodoTable from './DailyTodo/DailyTodoTable'
+import DailyTodoTable from './DailyTodoTable'
 
 class DailyTodosContainer extends Component {
   render () {

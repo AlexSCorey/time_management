@@ -1,5 +1,5 @@
 
-import moment, { weekdays } from 'moment'
+import moment from 'moment'
 
 export const ADD_TODO = 'ADD_TODO'
 export const SUBMIT_TODO = 'SUBMIT_TODO'
@@ -9,32 +9,38 @@ export const ADD_DURATION = 'ADD_DURATION'
 export const NEXT_WEEK = 'NEXT_WEEK'
 export const LAST_WEEK = 'Last_WEEK'
 
-export function newTodo (newTodo) {
-  return {
-    type: ADD_TODO,
-    payload: {
-      title: newTodo
-    }
-  }
-}
-export function saveTodo (value, duration) {
+// export function newTodo (newTodo) {
+//   console.log(newTodo, 'newtodo')
+//   return {
+//     type: ADD_TODO,
+//     payload: {
+//       title: newTodo
+//     }
+//   }
+// }
+export function saveTodo (value, startDate, endDate) {
+  console.log(value, 'value')
+  let start = moment(startDate)
+  let end = moment(endDate)
+  let duration = moment.duration(end.diff(start))
   return {
     type: SUBMIT_TODO,
     payload: {
       title: `${value}`,
+      startDate: start,
       duration: duration,
       todo_id: Math.floor(Math.random() * 100)
     }
   }
 }
-export function addDuration (duration) {
-  return {
-    type: ADD_DURATION,
-    payload: {
-      duration: duration
-    }
-  }
-}
+// export function addDuration (duration) {
+//   return {
+//     type: ADD_DURATION,
+//     payload: {
+//       duration: duration
+//     }
+//   }
+// }
 export function saveProfile (profile) {
   return ({
     type: SAVE_PROFILE,

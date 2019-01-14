@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import { Table } from 'bloomer'
 import moment from 'moment'
 
-// import DailyTodo from './DailyTodo'
-// import TimeColumn from './TimeColumn'
-
 class DailyTodoTable extends Component {
   todoInCell (cell, weekDayTodos) {
     return (

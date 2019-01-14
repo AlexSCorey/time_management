@@ -30,7 +30,7 @@ class App extends Component {
                 <Profile onSaveProfile={onSaveProfile} profile={profile} />}
               />
               <Route path='/list' render={() =>
-                <TodoContainer todos={todos} timeOfDay={timeOfDay} onAddDuration={onAddDuration} onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} creatingTodo={creatingTodo} />}
+                <TodoContainer todos={todos} timeOfDay={timeOfDay} onAddDuration={onAddDuration} onSaveTodo={onSaveTodo} creatingTodo={creatingTodo} />}
               />
               <Route path='/dailytodos' render={() =>
                 <DailyTodosContainer timeOfDay={timeOfDay} onGetNextWeekTodos={onGetNextWeekTodos} onGetLastWeekTodos={onGetLastWeekTodos} todos={todos} weekDays={weekDays} currentWeek={currentWeek} />}
@@ -69,12 +69,12 @@ const mapStateToProps = createSelector(
     weekDays: weekDays })
 )
 const mapActionsToProps = {
-  onNewTodo: newTodo,
+  // onNewTodo: newTodo,
   onSaveTodo: saveTodo,
   onLogin: login,
   onRegister: register,
   onSaveProfile: saveProfile,
-  onAddDuration: addDuration,
+  // onAddDuration: addDuration,
   onGetNextWeekTodos: getNextWeekTodos,
   onGetLastWeekTodos: getLastWeekTodos
 }

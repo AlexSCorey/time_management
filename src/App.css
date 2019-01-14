@@ -146,14 +146,18 @@ margin-right:30px;
   animation-duration:3s;
   animation-name:slidein;
 }
-.fadeIn{
-  animation-duration:3s;
-  animation-name:slidein;
+.datePickerContainer{
+  display:flex;
+  justify-content: space-evenly;
+}
+.datePickerBlock{
+  display: flex;
+  justify-content: space-evenly;
 }
 .headerNavbar{
   display:flex;
-  justify-content: center;
-  align-content:space-evenly;
+  justify-content: space-around;
+  align-content:space-around;
 }
 .active{
   border:1px solid red;

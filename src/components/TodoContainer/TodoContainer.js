@@ -5,11 +5,11 @@ import TodoList from './TodoList'
 
 class TodoContainer extends Component {
   render () {
-    let { todos, onSaveTodo, onNewTodo, creatingTodo, onAddDuration } = this.props
+    let { todos, onSaveTodo, creatingTodo } = this.props
     if (todos && todos.length > 0) {
       return (
         <div >
-          <AddTodo onSaveTodo={onSaveTodo} onNewTodo={onNewTodo} onAddDuration={onAddDuration} creatingTodo={creatingTodo} />
+          <AddTodo onSaveTodo={onSaveTodo} creatingTodo={creatingTodo} />
           <div className='todoContainer'>
             <TodoList className='todoList' todos={todos} key={todos.id} />
           </div>
