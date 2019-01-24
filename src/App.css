@@ -50,6 +50,16 @@ margin-right:30px;
 .saveBtn{
   margin-left:60px;
 }
+Table{
+  min-height: 100vh !important;
+}
+.addTodoBtn{
+  height: 40px;
+  border-radius:5px;
+  min-width: 200px;
+  margin-top: 5px;
+  font-size: 1rem;
+}
 .level-item{
   margin-left:auto;
   margin-right:auto;
@@ -123,6 +133,9 @@ margin-right:30px;
 .todoCell{
   background-color: aquamarine;
 }
+.cell{
+  max-height: 1px !important;
+}
 .perc{
   background-color: red;
   display:block;
@@ -195,4 +208,12 @@ margin-right:30px;
   display:flex;
   justify-content:space-around;
   align-content:center;
+}
+.addTodoComponent{
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1; 
+  top: 0; 
+  left: 0;
 }

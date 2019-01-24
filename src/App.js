@@ -13,14 +13,16 @@ import LoginContainer from './components/LoginAndRegister/LoginContainer'
 import Profile from './components/Profile'
 import DailyTodosContainer from './components/DailyCalendarTodo/DailyTodosContainer'
 import Header from './components/Header'
+import AddTodo from './components/TodoContainer/AddTodo'
 
 class App extends Component {
   render () {
-    let { todos, timeOfDay, onSaveTodo, onNewTodo, creatingTodo, onLogin, onRegister, onSaveProfile, profile, onAddDuration, onGetNextWeekTodos, onGetLastWeekTodos, currentWeek, weekDays } = this.props
+    let { todos, timeOfDay, onSaveTodo, creatingTodo, onLogin, onRegister, onSaveProfile, profile, onAddDuration, onGetNextWeekTodos, onGetLastWeekTodos, currentWeek, weekDays } = this.props
     return (
       <Router>
         <div className='App'>
           <Header />
+          <AddTodo className='addTodoComponent' onSaveTodo={onSaveTodo} creatingTodo={creatingTodo} />
           <div className='main'>
             <div className='routes'>
               <Route path='/login' render={() =>

@@ -22,12 +22,13 @@ export function saveTodo (value, startDate, endDate) {
   console.log(value, 'value')
   let start = moment(startDate)
   let end = moment(endDate)
-  let duration = moment.duration(end.diff(start))
+  let duration = moment.duration(end.diff(start)).format()
   return {
     type: SUBMIT_TODO,
     payload: {
       title: `${value}`,
       startDate: start,
+      endDate: end,
       duration: duration,
       todo_id: Math.floor(Math.random() * 100)
     }

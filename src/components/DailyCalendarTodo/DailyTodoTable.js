@@ -22,7 +22,9 @@ class DailyTodoTable extends Component {
       return todo.title
     }
   }
+  cellClassName (cell, weekDayTodo) {
 
+  }
   render () {
     let { todos, weekDay, timeOfDay } = this.props
     let weekDayTodos = todos.filter(todo => {
@@ -42,14 +44,13 @@ class DailyTodoTable extends Component {
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className='calendarScreen'>
             {timeOfDay.map((cell) => {
-              // let todoTitle = this.todoTitle(cell, weekDayTodos)
               let weekDayTodo = this.todoInCell(cell, weekDayTodos)
               return (
-                <tr className={weekDayTodo ? 'todoCell' : null}>
-                  <td>{cell.startTime.format('h:mma')}</td>
-                  <td>{weekDayTodo ? weekDayTodo.title : null}</td>
+                <tr className={weekDayTodo ? 'todoCell cell' : null}>
+                  <td className={this.cellClassName(cell, weekDayTodo)} title={weekDayTodo ? weekDayTodo.title : null} />
+                  {console.log(cell, 'weekDay Todo')}
                 </tr>
               )
             })}
