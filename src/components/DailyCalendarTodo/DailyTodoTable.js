@@ -23,7 +23,16 @@ class DailyTodoTable extends Component {
     }
   }
   cellClassName (cell, weekDayTodo) {
-
+    console.log(weekDayTodo, 'here')
+    let todoStartTime = weekDayTodo.todo_start_time.startOf('minute')
+    let todoEndTime = moment(new Date(todoStartTime)).add(weekDayTodo.duration, 'minute').startOf('minute')
+    if (todoStartTime <= cell.startTime) {
+      return ('cellTopBorder')
+    } if (todoEndTime >= cell.endTime) {
+      return ('cellBottomBorder')
+    } else {
+      return ('cellSideBorder')
+    }
   }
   render () {
     let { todos, weekDay, timeOfDay } = this.props
@@ -48,9 +57,10 @@ class DailyTodoTable extends Component {
             {timeOfDay.map((cell) => {
               let weekDayTodo = this.todoInCell(cell, weekDayTodos)
               return (
-                <tr className={weekDayTodo ? 'todoCell cell' : null}>
-                  <td className={this.cellClassName(cell, weekDayTodo)} title={weekDayTodo ? weekDayTodo.title : null} />
-                  {console.log(cell, 'weekDay Todo')}
+                <tr className={weekDayTodo ? 'todoCell' : null}>
+                  <td className='cell' title={weekDayTodo ? weekDayTodo.title : null}>
+                    <a className='cellText'>{weekDayTodo ? weekDayTodo.title : null}</a>
+                  </td>
                 </tr>
               )
             })}

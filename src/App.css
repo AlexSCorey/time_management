@@ -132,24 +132,28 @@ Table{
 }
 .todoCell{
   background-color: aquamarine;
+  padding:0;
 }
-.cell{
+
+a{
   max-height: 1px !important;
+  border-top: 3px solid black;
+  visibility: hidden;
 }
-.perc{
+.todoCell:hover a{
+  visibility: visible;
+}
+/* .perc{
   background-color: red;
   display:block;
   position:fixed;
   bottom: 1px;
-}
+} */
 .time{
   min-width: 35px;
   height:400px;
   border: 1px solid black;
   margin:0 5px;
-}
-#pieChart{
-  border:1px solid red
 }
 .startEndContainer{
   display:flex;
